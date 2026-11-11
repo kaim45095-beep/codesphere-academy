@@ -1,0 +1,110 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CodeSphereAcademy.Site" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Styles/main.css?v=2" rel="stylesheet" type="text/css" />
+    
+    <script>
+if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+</script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+        <header>
+            <div class="logo">
+                <a href="Default.aspx" style="text-decoration: none; color: inherit;">
+                    <h1>CodeSphere Academy</h1>
+                </a>
+            </div>
+            
+            <div class="header-controls">
+                <div class="dropdown">
+                    <button class="dropbtn" type="button">&#9776;</button>
+                    
+                    <div class="dropdown-content">
+                        <a href="Default.aspx">Home</a>
+                        <a href="AboutUs.aspx">About Us</a>
+                        
+                        <!-- Courses is now public for everyone -->
+                        <a href="Courses.aspx">Courses</a>
+
+                        <asp:PlaceHolder ID="phGuestNav" runat="server">
+                            <a href="Register.aspx">Register</a>
+                            <a href="Login.aspx">Login</a>
+                        </asp:PlaceHolder>
+
+                        <asp:PlaceHolder ID="phLearnerNav" runat="server" Visible="false">
+                            <a href="LearnerDashboard.aspx">Dashboard</a>
+                            <a href="Profile.aspx">My Profile</a>
+                        </asp:PlaceHolder>
+
+                        <asp:PlaceHolder ID="phAdminNav" runat="server" Visible="false">
+                            <a href="AdminDashboard.aspx">Admin Dashboard</a>
+                            <a href="ManageUsers.aspx">Manage Users</a>
+                            <a href="ManageResources.aspx">Manage Courses</a>
+                        </asp:PlaceHolder>
+
+                        <asp:PlaceHolder ID="phLoggedInNav" runat="server" Visible="false">
+                            <a href="Logout.aspx" style="color: #e74c3c; font-weight: bold;">Logout</a>
+                        </asp:PlaceHolder>
+                    </div>
+                </div>
+
+                <button id="themeToggle" class="theme-toggle-btn" type="button" title="Toggle Theme">🌙</button>
+            </div>
+        </header>
+
+        <main>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <footer>
+            <div class="footer-contact" style="margin-bottom: 15px;">
+                <strong style="font-size: 16px;">Contact Us</strong>
+                <p style="margin-top: 5px; color: var(--text-header-footer); opacity: 0.9;">
+                    📞 +60 3-8996 1000 &nbsp;|&nbsp; ✉️ support@codesphereacademy.com
+                </p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="Terms.aspx">Terms & Conditions</a>
+            </div>
+            
+            <p style="margin-top: 10px;">&copy; 2026 CodeSphere Academy. CT050-3-2-WAPP Web Applications.</p>
+        </footer>
+
+    </form>
+
+    <script>
+        const toggleButton = document.getElementById('themeToggle');
+        
+        if (document.documentElement.getAttribute('data-theme') === 'dark') {
+            toggleButton.textContent = '☀️';
+        }
+
+        toggleButton.addEventListener('click', () => {
+            let currentTheme = document.documentElement.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                toggleButton.textContent = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                toggleButton.textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+</html>

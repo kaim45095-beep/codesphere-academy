@@ -1,0 +1,223 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-main: #f4f7f6;
+    --text-main: #333;
+    --bg-header-footer: #2c3e50;
+    --text-header-footer: #ffffff;
+    --bg-content: #ffffff;
+    --link-hover: #3498db;
+    --container-bg: #f9f9f9;
+    --border-color: #ddd;
+}
+
+[data-theme="dark"] {
+    --bg-main: #121212;
+    --text-main: #e0e0e0;
+    --bg-header-footer: #1a1a1a;
+    --text-header-footer: #e0e0e0;
+    --bg-content: #1e1e1e;
+    --link-hover: #5dade2;
+    --container-bg: #2c2c2c;
+    --border-color: #444;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ASP.NET wraps everything in a form. This forces the form to fill the screen */
+#form1 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--bg-header-footer);
+    color: var(--text-header-footer);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+    header .logo h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: var(--text-header-footer);
+    font-size: 26px;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    outline: none;
+}
+
+    .dropbtn:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--container-bg);
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+    z-index: 1000;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+    .dropdown-content a {
+        color: var(--text-main);
+        padding: 14px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        transition: background-color 0.2s;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: var(--link-hover);
+        }
+
+[data-theme="dark"] .dropdown-content a:hover {
+    background-color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    outline: none;
+    color: var(--text-header-footer);
+}
+
+    .theme-toggle-btn:hover {
+        transform: scale(1.15);
+    }
+
+main {
+    flex: 1; /* Pushes the footer down */
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: var(--bg-content);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+}
+
+footer {
+    background-color: var(--bg-header-footer);
+    color: var(--text-header-footer);
+    text-align: center;
+    padding: 20px 15px;
+    font-size: 14px;
+    margin-top: auto;
+    transition: background-color 0.3s;
+}
+
+.footer-links {
+    margin-bottom: 8px;
+}
+
+    .footer-links a {
+        color: var(--text-header-footer);
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s;
+    }
+
+        .footer-links a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+.footer-divider {
+    color: var(--text-header-footer);
+    opacity: 0.6;
+}
+
+[data-theme="dark"] .auth-container,
+[data-theme="dark"] .profile-container,
+[data-theme="dark"] .catalog-container,
+[data-theme="dark"] .admin-container,
+[data-theme="dark"] .about-container,
+[data-theme="dark"] .card,
+[data-theme="dark"] .team-member,
+[data-theme="dark"] .materials-section {
+    background-color: var(--container-bg);
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+    [data-theme="dark"] .dashboard-header h2,
+    [data-theme="dark"] .catalog-header h2,
+    [data-theme="dark"] .admin-container h2,
+    [data-theme="dark"] .about-container h2,
+    [data-theme="dark"] .form-group label,
+    [data-theme="dark"] .team-section h3,
+    [data-theme="dark"] .portal-header h2,
+    [data-theme="dark"] .materials-section h3 {
+        color: var(--text-main);
+    }
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .search-input,
+[data-theme="dark"] .search-dropdown {
+    background-color: #333;
+    color: #fff;
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .course-grid th,
+[data-theme="dark"] .admin-grid th {
+    background-color: #2c2c2c;
+}
+
+[data-theme="dark"] .course-grid td,
+[data-theme="dark"] .admin-grid td {
+    color: var(--text-main);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .course-grid tr:hover,
+[data-theme="dark"] .admin-grid tr:hover {
+    background-color: #252525;
+}
